@@ -6,6 +6,7 @@ package {
 android_app {
     name: "DeskClock",
     resource_dirs: ["res"],
+    asset_dirs: ["assets"],
     sdk_version: "current",
     target_sdk_version: "30",
     overrides: [
@@ -33,6 +34,13 @@ android_app {
         "androidx.appcompat_appcompat",
         "androidx.gridlayout_gridlayout",
         "androidx.recyclerview_recyclerview",
+        "androidx.appsearch_appsearch",
+        "androidx.appsearch_appsearch-builtin-types",
+        "androidx.appsearch_appsearch-platform-storage",
+        "kotlinx_coroutines",
+        "kotlinx_coroutines_android",
+        "kotlinx_coroutines_guava",
+        "guava",
     ],
 
     aaptflags: ["--legacy"],

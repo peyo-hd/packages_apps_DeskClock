@@ -297,5 +297,24 @@
             android:name="com.android.alarmclock.DigitalAppWidgetCityService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
+        <uses-library
+            android:name="com.android.extensions.appfunctions"
+            android:required="false" />
+
+        <service
+            android:name="com.google.android.appfunctions.service.MainAppFunctionService"
+            android:permission="android.permission.BIND_APP_FUNCTION_SERVICE"
+            android:exported="true">
+            <property
+                android:name="android.app.appfunctions"
+                android:value="app_function.xml" />
+            <intent-filter>
+                <action android:name="android.app.appsearch.functions.AppFunctionService" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.app.appfunctions.AppFunctionService" />
+            </intent-filter>
+        </service>
+
     </application>
 </manifest>
