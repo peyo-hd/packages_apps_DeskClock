@@ -27,6 +27,7 @@ import android.provider.BaseColumns
 import android.text.TextUtils
 
 import com.android.deskclock.LogUtils
+import com.android.deskclock.appaf.AppSearchUtil
 import com.android.deskclock.data.Weekdays
 import com.android.deskclock.provider.ClockContract.AlarmSettingColumns
 import com.android.deskclock.provider.ClockContract.AlarmsColumns
@@ -40,6 +41,8 @@ import java.util.Calendar
  */
 class ClockDatabaseHelper(context: Context)
     : SQLiteOpenHelper(context, DATABASE_NAME, null, VERSION_8) {
+
+    private val mContext: Context = context.applicationContext
 
     override fun onCreate(db: SQLiteDatabase) {
         createAlarmsTable(db)
@@ -59,6 +62,7 @@ class ClockDatabaseHelper(context: Context)
                 AlarmsColumns.DELETE_AFTER_USE + ") VALUES "
         db.execSQL(insertMe + DEFAULT_ALARM_1)
         db.execSQL(insertMe + DEFAULT_ALARM_2)
+        AppSearchUtil.getInstance(mContext).insertDefaultAlarmsToAppSearch()
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, currentVersion: Int) {

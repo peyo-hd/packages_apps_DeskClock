@@ -23,6 +23,7 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.preference.PreferenceManager
 
+import com.android.deskclock.appaf.AppSearchUtil
 import com.android.deskclock.controller.Controller
 import com.android.deskclock.data.DataModel
 import com.android.deskclock.events.LogEventTracker
@@ -39,6 +40,7 @@ class DeskClockApplication : Application() {
         UiDataModel.uiDataModel.init(applicationContext, prefs)
         Controller.getController().setContext(applicationContext)
         Controller.getController().addEventTracker(LogEventTracker(applicationContext))
+        AppSearchUtil.getInstance(applicationContext)
     }
 
     companion object {
